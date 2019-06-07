@@ -11,6 +11,7 @@ import {SentMailComponent} from './sent-mail/sent-mail.component';
 import {VerificationComponent} from './verification/verification.component';
 import {Ng2SmartTableModule} from 'ng2-smart-table';
 import {VerifyMailComponent} from './verify-mail/verify-mail.component';
+import {AuthGuardService} from '../guards/auth-guard.service';
 
 const PAGES_COMPONENTS = [
     PagesComponent,
@@ -30,7 +31,10 @@ const PAGES_COMPONENTS = [
         UsersComponent,
         SentMailComponent,
         VerificationComponent,
-        VerifyMailComponent,
+        VerifyMailComponent
+    ],
+    providers: [
+        AuthGuardService
     ]
 })
 export class PagesModule {

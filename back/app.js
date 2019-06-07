@@ -8,6 +8,7 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter      = require('./routes/index');
 var usersRouter      = require('./routes/users');
 var mailsRouter      = require('./routes/mails');
+var loginRouter      = require('./routes/login');
 var verifiedRouter   = require('./routes/verified_email');
 var unverifiedRouter = require('./routes/unverified');
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/get_users', usersRouter);
+app.use('/login', loginRouter);
 app.use('/get_mails', mailsRouter);
 app.use('/send_verified', verifiedRouter);
 app.use('/send_unverified', unverifiedRouter);

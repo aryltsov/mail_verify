@@ -9,8 +9,10 @@ import {UsersComponent} from './users/users.component';
 import {SentMailComponent} from './sent-mail/sent-mail.component';
 import {VerificationComponent} from './verification/verification.component';
 import {VerifyMailComponent} from './verify-mail/verify-mail.component';
+import {AuthGuardService} from '../guards/auth-guard.service';
 
 const routes: Routes = [{
+    canActivate: [AuthGuardService],
     path: '',
     component: PagesComponent,
     children: [{
