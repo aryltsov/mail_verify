@@ -19,7 +19,7 @@ export class VerificationComponent implements OnInit {
             custom: [
                 {name: 'show', title: '<i class="fa fa-xs fa-eye"></i>'}
             ],
-            position: 'right'
+            posve_ition: 'right'
         },
         columns: {
             sid: {
