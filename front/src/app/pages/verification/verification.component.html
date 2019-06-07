@@ -1,0 +1,16 @@
+<nb-card size="xsmall">
+    <nb-card-header>
+        <span>List of Verified Emails</span>
+    </nb-card-header>
+
+
+    <nb-card-body class="p-0">
+        <ng2-smart-table
+                class="table table-hover"
+                [source]="source"
+                [settings]="settings"
+                (custom)="show($event)"
+        ></ng2-smart-table>
+    </nb-card-body>
+
+</nb-card>

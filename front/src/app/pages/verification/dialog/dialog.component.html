@@ -1,0 +1,40 @@
+<nb-card>
+    <nb-card-header *ngIf="verify">Verified email</nb-card-header>
+    <nb-card-header *ngIf="!verify">Not verified email</nb-card-header>
+    <nb-card-body>
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    From
+                </div>
+                <div class="col-10">
+                    {{emailFrom}}
+                </div>
+            </div>
+            <div class="row" *ngIf="subject">
+                <div class="col-2">
+                    Subject
+                </div>
+                <div class="col-10">
+                    {{subject}}
+                </div>
+            </div>
+            <div class="row" *ngIf="text">
+                <div class="col-2">
+                    Text
+                </div>
+                <div class="col-10" [innerHtml]="text"></div>
+            </div>
+            <div class="row" *ngIf="text">
+                <div class="col-2">
+                    Text html
+                </div>
+                <div class="col-10">
+                    <pre><code [highlight]="text"></code></pre>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+
+</nb-card>
+
