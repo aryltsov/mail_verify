@@ -1,8 +1,3 @@
-/**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
 import {APP_BASE_HREF} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -10,6 +5,7 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {CoreModule} from './@core/core.module';
 
+import {LoginComponent} from './pages/login/login.component';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ThemeModule} from './@theme/theme.module';
@@ -30,7 +26,7 @@ export function hljsLanguages() {
 }
 
 @NgModule({
-    declarations: [DialogComponent, AppComponent],
+    declarations: [DialogComponent, AppComponent, LoginComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -45,11 +41,11 @@ export function hljsLanguages() {
             languages: hljsLanguages
         })
     ],
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent, LoginComponent],
     providers: [
         {provide: APP_BASE_HREF, useValue: '/'},
     ],
-    entryComponents: [DialogComponent]
+    entryComponents: [DialogComponent, LoginComponent]
 })
 export class AppModule {
 }
