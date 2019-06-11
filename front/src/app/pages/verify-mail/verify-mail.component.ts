@@ -13,13 +13,21 @@ export class VerifyMailComponent implements OnInit {
 
   constructor(public unverifiedService: UnverifiedService) { }
 
-  sendEmail(value) {
+  sendUnverifiedEmail(value) {
 
       this.unverifiedService.sendUnverifiedMail(value).subscribe((res) => {
         this.userEmail = res;
       });
 
       alert('The message has been sent');
+  }
+  sendVerifiedEmail(value) {
+
+    this.unverifiedService.sendVerifiedMail(value).subscribe((res) => {
+      this.userEmail = res;
+    });
+
+    alert('The message has been sent');
   }
 
   ngOnInit() {

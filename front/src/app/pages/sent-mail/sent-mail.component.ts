@@ -11,7 +11,7 @@ export class SentMailComponent implements OnInit {
     settings = {
         columns: {
             _id: {
-                title: 'ID'
+                title: 'SID'
             },
             emailFrom: {
                 title: 'Email From'

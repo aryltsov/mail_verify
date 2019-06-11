@@ -6,15 +6,18 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.4",
+    "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "fs": "0.0.1-security",
     "gmail-send": "^1.2.14",
     "http-errors": "~1.6.3",
     "mongodb": "^3.2.6",
     "morgan": "~1.9.1",
-    "body-parser": "^1.18.3",
-    "node-sass-middleware": "0.11.0"
+    "node-sass-middleware": "0.11.0",
+    "node-stringbuilder": "^2.2.4"
   }
 }
