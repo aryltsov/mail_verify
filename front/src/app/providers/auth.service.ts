@@ -6,7 +6,6 @@ import {ajax} from 'rxjs/ajax';
 import {Router} from '@angular/router';
 
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -15,6 +14,7 @@ export class AuthService {
 
     constructor(private httpClient: HttpClient, private _router: Router) {
     }
+
 
     login(email: string, password: string) {
         return ajax({
@@ -26,8 +26,11 @@ export class AuthService {
             }
         }).pipe(
             map(userResponse => {
+                console.log('userResponse', userResponse);
 
-                if (userResponse && userResponse.response && userResponse.response.length && userResponse.response[0]._id) {
+                if ((<any>userResponse).wrong_pass) {
+
+                } else if (userResponse && userResponse.response && userResponse.response.length && userResponse.response[0]._id) {
                     localStorage.setItem('access_token', userResponse.response[0]._id);
                     localStorage.setItem('user_email', userResponse.response[0].email);
                     this._router.navigate(['/page/verify_mail']);

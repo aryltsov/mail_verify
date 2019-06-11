@@ -22,6 +22,7 @@ router.get('/',function (req, res) {
         dbo.collection("mailData").find({}).toArray(async function (err, data) {
             if (err) throw err;
             res.send(data);
+
         });
 
         db.close();

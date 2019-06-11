@@ -11,6 +11,7 @@ var mailsRouter      = require('./routes/mails');
 var loginRouter      = require('./routes/login');
 var verifiedRouter   = require('./routes/verified_email');
 var unverifiedRouter = require('./routes/unverified');
+var testRouter = require('./routes/test');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/get_mails', mailsRouter);
 app.use('/send_verified', verifiedRouter);
 app.use('/send_unverified', unverifiedRouter);
 
+app.use('/test',testRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
