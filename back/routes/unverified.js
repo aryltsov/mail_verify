@@ -4,7 +4,7 @@ var nodemailer = require('nodemailer');
 var send = express();
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
-const StringBuilder = require('node-stringbuilder');
+// const StringBuilder = require('node-stringbuilder');
 
 const crypto = require('crypto');
 
@@ -22,10 +22,11 @@ router.post('/', jsonParser, function (req, res) {
     var sendFrom = 'anton@peerkey.com';
     var sendTo   = req.body.email;
 
-    var stringBuild = new StringBuilder(sendTo);
-    stringBuild.append('Test');
+    var stringBuild = sendTo;
+    stringBuild += 'Test';
     // stringBuild.append('TestWrong123');
-    stringBuild.append(new Date().setHours(0, 0, 0, 0));
+    // stringBuild.append(new Date().setHours(0, 0, 0, 0));
+    stringBuild += (new Date().setHours(0, 0, 0, 0));
     console.log(stringBuild);
 
     var SID = crypto.createHash('sha256').update(stringBuild.toString()).digest('hex');

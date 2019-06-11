@@ -4,7 +4,7 @@ var nodemailer = require('nodemailer');
 var send = express();
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
-const StringBuilder = require('node-stringbuilder');
+// const StringBuilder = require('node-stringbuilder');
 
 const crypto = require('crypto');
 
@@ -21,10 +21,15 @@ router.post('/', jsonParser, function (req, res) {
 
     var sendFrom = 'donotreply@peerkey.com';
     var sendTo   = req.body.email;
-    var time     = new Date().setHours(0, 0, 0, 0)
-    var stringBuild = new StringBuilder(sendTo);
-    stringBuild.append('Test');
-    stringBuild.append(time);
+    var time     = new Date().setHours(0, 0, 0, 0);
+
+    // var stringBuild = new StringBuilder(sendTo);
+    var stringBuild = sendTo;
+
+    // stringBuild.append('Test');
+    stringBuild += 'Test';
+    stringBuild += time;
+    // stringBuild.append(time);
     console.log("Date: " + time);
 
     var SID = crypto.createHash('sha256').update(stringBuild.toString()).digest('hex');
@@ -361,13 +366,13 @@ router.post('/', jsonParser, function (req, res) {
             "</html> "
     };
 
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.messageId);
-        }
-    });
+    // transporter.sendMail(mailOptions, function(error, info){
+    //     if (error) {
+    //         console.log(error);
+    //     } else {
+    //         console.log('Email sent: ' + info.messageId);
+    //     }
+    // });
 });
 
 
