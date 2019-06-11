@@ -16,7 +16,7 @@ MongoClient.connect(URL, function(err, db) {
 
     dbo.collection("mailData").find({isSent: true }).toArray(function(err, result) {
         if (err) throw err;
-        console.log(result);
+        // console.log(result);
     });
     db.close();
 });
