@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { UnverifiedService} from '../../providers/unverified.service';
+import { NbToastrService } from '@nebular/theme';
+
 
 
 @Component({
@@ -11,7 +13,7 @@ export class VerifyMailComponent implements OnInit {
 
   userEmail: string;
 
-  constructor(public unverifiedService: UnverifiedService) { }
+  constructor(public unverifiedService: UnverifiedService, private toastrService: NbToastrService) { }
 
   sendUnverifiedEmail(value) {
 
@@ -19,7 +21,9 @@ export class VerifyMailComponent implements OnInit {
         this.userEmail = res;
       });
 
-      alert('The message has been sent');
+      const message = 'The message has been sent';
+
+      this.showToast('top-left', 'success', message, '');
   }
   sendVerifiedEmail(value) {
 
@@ -27,10 +31,25 @@ export class VerifyMailComponent implements OnInit {
       this.userEmail = res;
     });
 
-    alert('The message has been sent');
+    const message = 'The message has been sent';
+
+    this.showToast('top-left', 'success', message, '');
+
   }
 
   ngOnInit() {
+  }
+
+  showToast(position, status, mess, title) {
+    this.toastrService.show(
+      mess,
+      title,
+      {
+        duration: 5000,
+        position: position,
+        status: status
+      }
+    );
   }
 
 }
