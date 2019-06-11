@@ -23,7 +23,7 @@ router.post('/', jsonParser, function (req, res) {
     var sendTo   = req.body.email;
 
     var stringBuild = sendTo;
-    stringBuild += 'Test';
+    stringBuild += 'TestWrong123';
     // stringBuild.append('TestWrong123');
     // stringBuild.append(new Date().setHours(0, 0, 0, 0));
     stringBuild += (new Date().setHours(0, 0, 0, 0));
