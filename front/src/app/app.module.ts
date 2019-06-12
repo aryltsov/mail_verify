@@ -41,7 +41,7 @@ export function hljsLanguages() {
             languages: hljsLanguages
         })
     ],
-    bootstrap: [AppComponent, LoginComponent],
+    bootstrap: [AppComponent],
     providers: [
         {provide: APP_BASE_HREF, useValue: '/'},
     ],
