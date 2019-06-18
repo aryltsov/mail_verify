@@ -16,7 +16,7 @@ export class UnverifiedService {
   sendUnverifiedMail(userEmail) {
 
     let body = {email: userEmail};
-    const URL = window.location.protocol + window.location.hostname
+    const URL = window.location.protocol + '//' + window.location.hostname;
     return ajax({
       url: URL + ':3000/send_unverified',
       method: 'POST',
@@ -34,7 +34,7 @@ export class UnverifiedService {
   sendVerifiedMail(userEmail) {
 
     let body = {email: userEmail};
-    const URL = window.location.protocol + window.location.hostname
+    const URL = window.location.protocol + '//' + window.location.hostname;
     return ajax({
       url: URL + ':3000/send_verified',
       method: 'POST',

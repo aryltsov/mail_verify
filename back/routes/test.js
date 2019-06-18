@@ -24,6 +24,7 @@ router.get('/',function(req, res) {
 
         db.close();
     });
+    res.send('Connect failed ');
 });
 
 module.exports = router;
