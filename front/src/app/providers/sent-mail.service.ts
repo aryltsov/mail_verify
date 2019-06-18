@@ -13,7 +13,8 @@ export class SentMailService {
     }
 
     getSentMailData() {
-        return ajax(`http://localhost:3000/get_mails/get_sent_mail`).pipe(
+        const URL = window.location.origin;
+        return ajax(URL + `:3000/get_mails/get_sent_mail`).pipe(
             map(mailResponse => {
                 console.log('mail: ', mailResponse);
                 return mailResponse.response;

@@ -13,7 +13,8 @@ export class UsersService {
     }
 
     getUsersData() {
-        return ajax(`http://localhost:3000/get_users`).pipe(
+      const URL = window.location.origin;
+        return ajax(URL + `:3000/get_users`).pipe(
             map(userResponse => {
                 console.log('users: ', userResponse);
                 return userResponse.response;

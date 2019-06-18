@@ -11,7 +11,7 @@ var mailsRouter      = require('./routes/mails');
 var loginRouter      = require('./routes/login');
 var verifiedRouter   = require('./routes/verified_email');
 var unverifiedRouter = require('./routes/unverified');
-var testRouter = require('./routes/test');
+var testRouter       = require('./routes/test');
 
 var app = express();
 

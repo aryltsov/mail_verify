@@ -12,7 +12,8 @@ export class VerificationService {
     }
 
     getVerificationData() {
-        return ajax(`http://localhost:3000/get_mails`).pipe(
+      const URL = window.location.origin;
+        return ajax(URL + `:3000/get_mails`).pipe(
             map(mailResponse => {
                 console.log('mail all: ', mailResponse);
                 return mailResponse.response;

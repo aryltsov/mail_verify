@@ -17,8 +17,9 @@ export class AuthService {
 
 
     login(email: string, password: string) {
+      const URL = window.location.origin;
         return ajax({
-            url: 'http://localhost:3000/login',
+            url: URL + ':3000/login',
             method: 'POST',
             body: {
                 email: email,
@@ -46,7 +47,8 @@ export class AuthService {
     }
 
     register(email: string, password: string) {
-        return this.httpClient.post<{ access_token: string }>('http://localhost:3000/register', {
+      const URL = window.location.origin;
+        return this.httpClient.post<{ access_token: string }>(URL + ':3000/register', {
             email,
             password
         }).pipe(tap(res => {

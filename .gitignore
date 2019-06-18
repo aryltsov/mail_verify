@@ -1,2 +1,6 @@
 /back/node_modules
-package-lock.json
+/back/package-lock.json
+/front//node_modules
+/front/package-lock.json
+/back/.idea
+/front/vscode
