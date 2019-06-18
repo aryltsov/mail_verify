@@ -17,7 +17,7 @@ export class AuthService {
 
 
     login(email: string, password: string) {
-      const URL = window.location.origin;
+      const URL = window.location.protocol + window.location.hostname
         return ajax({
             url: URL + ':3000/login',
             method: 'POST',
@@ -47,7 +47,7 @@ export class AuthService {
     }
 
     register(email: string, password: string) {
-      const URL = window.location.origin;
+      const URL = window.location.protocol + window.location.hostname
         return this.httpClient.post<{ access_token: string }>(URL + ':3000/register', {
             email,
             password

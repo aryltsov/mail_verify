@@ -13,7 +13,7 @@ export class UsersService {
     }
 
     getUsersData() {
-      const URL = window.location.origin;
+      const URL = window.location.protocol + window.location.hostname;
         return ajax(URL + `:3000/get_users`).pipe(
             map(userResponse => {
                 console.log('users: ', userResponse);

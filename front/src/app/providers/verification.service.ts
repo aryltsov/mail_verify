@@ -12,7 +12,7 @@ export class VerificationService {
     }
 
     getVerificationData() {
-      const URL = window.location.origin;
+      const URL = window.location.protocol + window.location.hostname
         return ajax(URL + `:3000/get_mails`).pipe(
             map(mailResponse => {
                 console.log('mail all: ', mailResponse);
