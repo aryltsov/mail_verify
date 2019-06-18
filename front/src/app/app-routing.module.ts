@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {LoginComponent} from './pages/login/login.component';
 import {
     NbAuthComponent,
-    NbLoginComponent,
     NbLogoutComponent,
     NbRegisterComponent,
     NbRequestPasswordComponent,
