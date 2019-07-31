@@ -12,6 +12,7 @@ const loginRouter = require('./routes/login');
 const verifiedRouter = require('./routes/verified_email');
 const unverifiedRouter = require('./routes/unverified');
 const testRouter       = require('./routes/test');
+const userData = require('./routes/userData');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/login', loginRouter);
 app.use('/get_mails', mailsRouter);
 app.use('/send_verified', verifiedRouter);
 app.use('/send_unverified', unverifiedRouter);
+app.use('/user_data', userData);
 
 app.use('/test', testRouter);
 // catch 404 and forward to error handler
