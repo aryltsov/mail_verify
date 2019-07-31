@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
@@ -10,11 +10,11 @@ import { NbThemeService } from '@nebular/theme';
 export class EchartsPieComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
-
+  @Input() verificationData: any;
   constructor(private theme: NbThemeService) {
   }
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors = config.variables;
@@ -28,9 +28,10 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
           formatter: '{a} <br/>{b} : {c} ({d}%)',
         },
         legend: {
-          orient: 'vertical',
-          left: 'left',
-          data: ['USA', 'Germany', 'France', 'Canada', 'Russia'],
+          orient: 'horizontal',
+          left: 'center',
+          bottom: 'bottom',
+          data: ['Verified Fake', 'Verified Real'],
           textStyle: {
             color: echarts.textColor,
           },
@@ -42,11 +43,8 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
             radius: '80%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: 'Germany' },
-              { value: 310, name: 'France' },
-              { value: 234, name: 'Canada' },
-              { value: 135, name: 'Russia' },
-              { value: 1548, name: 'USA' },
+              { value: this.verificationData[0], name: 'Verified Fake' },
+              { value: this.verificationData[1], name: 'Verified Real' },
             ],
             itemStyle: {
               emphasis: {

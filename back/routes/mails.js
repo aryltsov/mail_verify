@@ -1,33 +1,67 @@
-var express = require('express');
-var router = express.Router();
-
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const tunnel = require('tunnel-ssh');
+const fs = require('fs');
 
 const MongoClient = require('mongodb').MongoClient;
-const URL = "mongodb://localhost:27017/";
+const URL = "mongodb://127.0.0.1:27017/";
 const DB_NAME = 'verify_mail';
-
-
+// const config = {
+//     username: 'root',
+//     password: '9m+Bb9Br1LvYjb8g',
+//     host: '45.77.48.203',
+//     port:22,
+//     dstPort:27017,
+//     localHost:'127.0.0.1',
+//     localPort: 27000
+//
+// };
 router.get('/',function (req, res) {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+     MongoClient.connect(URL,  function (err, db) {
+         console.log(err);
+         console.log(db);
 
-    MongoClient.connect(URL, function (err, db) {
+         if (err) throw err;
+         let dbo = db.db(DB_NAME);
 
-        if (err) throw err;
-        let dbo = db.db(DB_NAME);
-
-        dbo.collection("mailData").find({}).toArray(async function (err, data) {
-            if (err) throw err;
-            res.send(data);
-            db.close();
-            console.log('base close');
-        });
+         dbo.collection("mailData").find({}).toArray(async function (err, data) {
+             if (err) throw err;
+             res.send(data);
+             db.close();
+             console.log('base close');
+         });
 
 
-    });
+     });
+    // const server = tunnel(config, function (error, server) {
+    //     if(error){
+    //         console.log(error);
+    //     }
+    //    // console.log(error, server)
+    //
+    //     mongoose.connect('mongodb://localhost:27000/verify_mail');
+    //     var db = mongoose.connection;
+    //     db.once('open', function() {
+    //
+    //         console.log("database connection established");
+    //
+    //         var users = db.collection('mailData');
+    //         users.find({}).toArray(function(err,data){
+    //             res.send(data);
+    //             db.close();
+    //         })
+    //     });
+    //
+    // });
+
+
+
 });
 
 router.get('/get_sent_mail',function (req, res) {

@@ -10,6 +10,8 @@ import {SentMailComponent} from './sent-mail/sent-mail.component';
 import {VerificationComponent} from './verification/verification.component';
 import {VerifyMailComponent} from './verify-mail/verify-mail.component';
 import {AuthGuardService} from '../guards/auth-guard.service';
+import {VerifyMethod1Component} from './verify-method1/verify-method1.component';
+import {VerifyMethod2Component} from './verify-method2/verify-method2.component';
 
 const routes: Routes = [{
     canActivate: [AuthGuardService],
@@ -33,6 +35,12 @@ const routes: Routes = [{
     }, {
         path: 'verification',
         component: VerificationComponent,
+    },  {
+        path: 'verify-method1',
+        component: VerifyMethod1Component
+    },  {
+      path: 'verify-method2',
+      component: VerifyMethod2Component
     }, {
         path: 'ui-features',
         loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
@@ -65,7 +73,7 @@ const routes: Routes = [{
         loadChildren: './miscellaneous/miscellaneous.module#MiscellaneousModule',
     }, {
         path: '',
-        redirectTo: 'verify_mail',
+        redirectTo: 'charts/echarts',
         pathMatch: 'full',
     }, {
         path: '**',

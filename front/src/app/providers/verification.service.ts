@@ -7,7 +7,6 @@ import {of} from 'rxjs';
     providedIn: 'root',
 })
 export class VerificationService {
-
     constructor() {
     }
 
@@ -15,7 +14,6 @@ export class VerificationService {
       const URL = window.location.protocol + '//' + window.location.hostname;
         return ajax(URL + `:3000/get_mails`).pipe(
             map(mailResponse => {
-                console.log('mail all: ', mailResponse);
                 return mailResponse.response;
             }),
             catchError(error => {

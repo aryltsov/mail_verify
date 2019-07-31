@@ -1,17 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const sassMiddleware = require('node-sass-middleware');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var mailsRouter = require('./routes/mails');
-var loginRouter = require('./routes/login');
-var verifiedRouter = require('./routes/verified_email');
-var unverifiedRouter = require('./routes/unverified');
-var testRouter       = require('./routes/test');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const mailsRouter = require('./routes/mails');
+const loginRouter = require('./routes/login');
+const verifiedRouter = require('./routes/verified_email');
+const unverifiedRouter = require('./routes/unverified');
+const testRouter       = require('./routes/test');
 
 var app = express();
 

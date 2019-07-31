@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <h2>Voice Verification - Method 1</h2>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="col-lg-12">
+          <p>Method 1 is about alerting a customer that a representative (us) is going to call and as a result gives them a notification with a number that they can ask the representative for if they choose to. Furthermore this gives the customer some time to think about what the request was in relation to and preprare themselves.</p>
+        </div>
+        <div class="col-lg-6">
+          <p>User Account ID:</p>
+          <div class="mb-5">
+            <form (ngSubmit)="sendMessage()">
+              <input nbInput size="small" required="true">
+              <button nbButton size="small" class="ml-5" type="submit">Authenticate</button>
+            </form>
+          </div>
+          <nb-alert status="success" closable (close)="onCloseMessage()" *ngIf="alertIsOpen">{{message}}</nb-alert>
+        </div>
+        <div class="col-lg-6"></div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

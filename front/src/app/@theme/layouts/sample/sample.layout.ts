@@ -25,12 +25,10 @@ import { StateService } from '../../../@core/utils';
                    tag="menu-sidebar"
                    responsive
                    [end]="sidebar.id === 'end'">
-        <nb-sidebar-header *ngIf="currentTheme !== 'corporate'">
-          <a href="#" class="btn btn-hero-success main-btn">
-            <span>Email verify</span>
-          </a>
+        <nb-sidebar-header *ngIf="currentTheme !== 'corporate'" class="d-flex">
+            <h4 routerLink="/">Dashboard</h4>
         </nb-sidebar-header>
-        <ng-content select="nb-menu"></ng-content>
+        <ng-content select="nb-menu" class="pt-0"></ng-content>
       </nb-sidebar>
 
       <nb-layout-column class="main-content">
@@ -44,6 +42,9 @@ import { StateService } from '../../../@core/utils';
       <nb-layout-column class="small" *ngIf="layout.id === 'three-column'">
         <nb-menu [items]="subMenu"></nb-menu>
       </nb-layout-column>
+      <nb-layout-footer fixed>
+          <ngx-footer></ngx-footer>
+      </nb-layout-footer>
     </nb-layout>
   `,
 })
