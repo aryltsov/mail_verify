@@ -9,10 +9,11 @@
           <p>Method 1 is about alerting a customer that a representative (us) is going to call and as a result gives them a notification with a number that they can ask the representative for if they choose to. Furthermore this gives the customer some time to think about what the request was in relation to and preprare themselves.</p>
         </div>
         <div class="col-lg-6">
-          <p>User Account ID:</p>
+<!--          <p>User Account ID:</p>-->
+          <p>User Account Token:</p>
           <div class="mb-5">
-            <form (ngSubmit)="sendMessage()">
-              <input nbInput size="small" required="true">
+            <form (ngSubmit)="sendMessage(userId.value)">
+              <input nbInput size="small" required="true" #userId>
               <button nbButton size="small" class="ml-5" type="submit">Authenticate</button>
             </form>
           </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PushNotificationService } from '../../providers/push-notification.service';
 
 @Component({
   selector: 'ngx-verify-method1',
@@ -9,7 +10,7 @@ export class VerifyMethod1Component implements OnInit {
 
   alertIsOpen = false;
   message: string;
-  constructor() { }
+  constructor(private pushNotificationService: PushNotificationService) { }
 
   ngOnInit() {
   }
@@ -18,8 +19,12 @@ export class VerifyMethod1Component implements OnInit {
     this.alertIsOpen = false;
   }
 
-  sendMessage() {
-    this.message = 'A representative' + ' UserName ' + 'will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code: ' + 'Code';
-    this.alertIsOpen = true;
+  sendMessage(id) {
+    if (id) {
+      const code = '---';
+      this.message = 'A representative' + ' UserName ' + 'will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code: ' + code;
+      this.alertIsOpen = true;
+      this.pushNotificationService.sendMessageToUser(id, code);
+    }
   }
 }
