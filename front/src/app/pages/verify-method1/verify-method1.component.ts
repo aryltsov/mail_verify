@@ -22,13 +22,13 @@ export class VerifyMethod1Component implements OnInit {
     this.alertIsOpen = false;
   }
 
-  getUserData(id) {
+  getUserData(userEmail) {
       const URL = window.location.protocol + '//' + window.location.hostname;
       return ajax({
         url: URL + ':3000/user_data',
         method: 'POST',
         body: {
-          id: id
+          userEmail: userEmail
         }
       }).pipe(
         map(userResponse => {
@@ -42,15 +42,16 @@ export class VerifyMethod1Component implements OnInit {
       );
   }
 
-  sendMessage(id) {
-    if (id) {
-      this.getUserData(id).subscribe(item => {
+  sendMessage(userEmail) {
+    // this.pushNotificationService.sendMessageToUser(1, 2);
+    if (userEmail) {
+      this.getUserData(userEmail).subscribe(item => {
         const code =  Math.random().toString(36).substring(2, 36);
-        this.message = 'A representative' + ' UserName ' + 'will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code: ' + code;
+        this.message = 'A representative ' + item.email + ' will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code:' + code;
         this.alertIsOpen = true;
-        this.pushNotificationService.sendMessageToUser(item.token, code);
+        console.log(item);
+        this.pushNotificationService.sendMessageToUser(item.token, this.message);
       });
-
     }
   }
 }

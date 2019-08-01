@@ -19,7 +19,7 @@ router.post('/', function (req, res, next) {
         var collection = db.collection("user");
 
         var query = {
-            "_id": req.body.id
+            "email": req.body.userEmail
         };
 
         var cursor = collection.find(query);

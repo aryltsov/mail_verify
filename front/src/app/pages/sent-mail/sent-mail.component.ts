@@ -44,7 +44,7 @@ export class SentMailComponent implements OnInit {
         },
         editable: false,
         actions: false, // hide action column
-        hideSubHeader: true, // hide filter row
+        hideSubHeader: false, // hide filter row
     };
     source: [];
 

@@ -9,6 +9,16 @@ import {UsersService} from '../../providers/users.service';
 })
 export class UsersComponent implements OnInit {
     settings = {
+      // actions: {
+      //   columnTitle: 'Actions',
+      //   add: false,
+      //   edit: false,
+      //   delete: false,
+      //   custom: [
+      //     {name: 'show', title: '<i class="fa fa-xs fa-eye"></i>'}
+      //   ],
+      //   posve_ition: 'right'
+      // },
         columns: {
             _id: {
                 title: 'ID'
@@ -22,7 +32,7 @@ export class UsersComponent implements OnInit {
         },
         editable: false,
         actions: false, // hide action column
-        hideSubHeader: true, // hide filter row
+        hideSubHeader: false, // hide filter row
     };
     source: [];
 

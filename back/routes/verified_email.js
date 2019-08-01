@@ -24,13 +24,10 @@ router.post('/', jsonParser, function (req, res) {
     var time     = new Date().setHours(0, 0, 0, 0);
 
     // var stringBuild = new StringBuilder(sendTo);
-    var stringBuild = sendTo;
+    var stringBuild = sendTo + 'Test' + time;
 
-    // stringBuild.append('Test');
-    stringBuild += 'Test';
-    stringBuild += time;
-    // stringBuild.append(time);
-    console.log("Date: " + time);
+    // stringBuild += 'Test';
+    // stringBuild += time;
 
     var SID = crypto.createHash('sha256').update(stringBuild.toString()).digest('hex');
     SID = SID.toString().toUpperCase();
@@ -366,13 +363,13 @@ router.post('/', jsonParser, function (req, res) {
             "</html> "
     };
 
-    // transporter.sendMail(mailOptions, function(error, info){
-    //     if (error) {
-    //         console.log(error);
-    //     } else {
-    //         console.log('Email sent: ' + info.messageId);
-    //     }
-    // });
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.messageId);
+        }
+    });
 });
 
 

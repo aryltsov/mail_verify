@@ -75,7 +75,7 @@ export class VerificationComponent implements OnInit {
             }
         },
         editable: false,
-        hideSubHeader: true, // hide filter row
+        hideSubHeader: false,  // hide filter row
     };
     source: [];
 

@@ -25,7 +25,7 @@ import { StateService } from '../../../@core/utils';
                    tag="menu-sidebar"
                    responsive
                    [end]="sidebar.id === 'end'">
-        <nb-sidebar-header *ngIf="currentTheme !== 'corporate'" class="d-flex">
+        <nb-sidebar-header *ngIf="currentTheme !== 'corporate'" class="d-flex overflow-hidden dashboards">
             <h4 routerLink="/">Dashboard</h4>
         </nb-sidebar-header>
         <ng-content select="nb-menu" class="pt-0"></ng-content>
