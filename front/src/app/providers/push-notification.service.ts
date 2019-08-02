@@ -28,9 +28,8 @@ export class PushNotificationService {
             body: message
           },
           registration_ids: [
-            deviceId
-            // 'eGE5ArYWM4U:APA91bFweQHTurZ-H-BsCVtgmss3SF94swuVELxoeAfrIS0DMX5Mf3Lflj2CTyLB2kAwbjRtuYfzQEYoEoim7kYyeEcRa0rxSlKW-TV3iIpvFlYxjqxSCuKhGk7rWYrsGldfVGUI6cag'
-            // // 'eLc8U885uEM:APA91bEvH5gUyywY21sNlMLEYG-tY0n5boa_flsvgheQ9U4KsS7GMFz4t4OqcWiErYHjIWpjABY-pduAPsCDfwqy1WMlvjitorWgCg_A1N4jKnb132Jfw4BA2hh2wjNsFZLP1rrugBkp'
+            // deviceId
+            'eLc8U885uEM:APA91bEvH5gUyywY21sNlMLEYG-tY0n5boa_flsvgheQ9U4KsS7GMFz4t4OqcWiErYHjIWpjABY-pduAPsCDfwqy1WMlvjitorWgCg_A1N4jKnb132Jfw4BA2hh2wjNsFZLP1rrugBkp'
           ],
           priority: 'high'
         }, httpOptions).pipe().subscribe(res => console.log(res));

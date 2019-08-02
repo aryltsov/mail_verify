@@ -2,11 +2,13 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const http = require('http');
+const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-const spawn = require('child_process').spawn;
-
+const SMTPServer = require("smtp-server").SMTPServer;
+const nodemailer = require('nodemailer');
+const verify  = require('./routes/services/verify-mail.service');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -18,7 +20,8 @@ const testRouter       = require('./routes/test');
 const userData = require('./routes/userData');
 const sidService = require('./routes/services/sid.service');
 
-var app = express();
+const app = express();
+
 const httpServer = http.createServer(app);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +48,6 @@ app.use('/send_unverified', unverifiedRouter);
 app.use('/user_data', userData);
 app.use('/sid', sidService);
 app.use('/test', testRouter);
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
@@ -63,7 +65,12 @@ app.use(function (err, req, res, next) {
 });
 
 
+
 app.post('/', function (req, res) {
     res.send('hello world');
+});
+
+fs.watch('../../../../mailsDir/new', (eventType, filename) => {
+    verify.readMail(filename);
 });
 module.exports = app;
