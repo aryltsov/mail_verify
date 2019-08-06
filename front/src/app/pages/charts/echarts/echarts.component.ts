@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import {VerificationService} from '../../../providers/verification.service';
-
 @Component({
   selector: 'ngx-echarts',
   styleUrls: ['./echarts.component.scss'],
@@ -10,7 +9,10 @@ import {VerificationService} from '../../../providers/verification.service';
 export class EchartsComponent implements OnInit {
   emailVerivication: any;
   phoneVerofication: any;
-  constructor(private mails: VerificationService) {}
+
+  constructor(private mails: VerificationService) {
+  }
+
   ngOnInit() {
     this.mails.getVerificationData().subscribe(res => {
       let verified = 0;

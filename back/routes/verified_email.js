@@ -1,10 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var nodemailer = require('nodemailer');
-var send = express();
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
-// const StringBuilder = require('node-stringbuilder');
+const express = require('express');
+const router = express.Router();
+const nodemailer = require('nodemailer');
+const send = express();
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 const crypto = require('crypto');
 
@@ -19,21 +18,17 @@ router.post('/', jsonParser, function (req, res) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
 
-    var sendFrom = 'donotreply@peerkey.com';
-    var sendTo   = req.body.email;
-    var time     = new Date().setHours(0, 0, 0, 0);
+    let sendFrom = 'donotreply@peerkey.com';
+    let sendTo   = req.body.email;
+    let time     = new Date().setHours(0, 0, 0, 0);
 
-    // var stringBuild = new StringBuilder(sendTo);
-    var stringBuild = sendTo + 'Test' + time;
+    let stringBuild = sendTo + 'Test' + time;
 
-    // stringBuild += 'Test';
-    // stringBuild += time;
-
-    var SID = crypto.createHash('sha256').update(stringBuild.toString()).digest('hex');
+    let SID = crypto.createHash('sha256').update(stringBuild.toString()).digest('hex');
     SID = SID.toString().toUpperCase();
     console.log(SID);
 
-    var transporter = nodemailer.createTransport({
+    let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
             user: 'peerkeytest@gmail.com',
@@ -41,7 +36,7 @@ router.post('/', jsonParser, function (req, res) {
         }
     });
 
-    var mailOptions = {
+    let mailOptions = {
         from: sendFrom,
         to: sendTo,
         subject: 'Test',

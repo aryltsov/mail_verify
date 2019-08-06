@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {request} from 'http';
-import {catchError, map, tap} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ajax} from 'rxjs/ajax';
-import {of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

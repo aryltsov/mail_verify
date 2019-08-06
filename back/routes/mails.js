@@ -7,16 +7,7 @@ const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 const URL = "mongodb://127.0.0.1:27017/";
 const DB_NAME = 'verify_mail';
-// const config = {
-//     username: 'root',
-//     password: '9m+Bb9Br1LvYjb8g',
-//     host: '45.77.48.203',
-//     port:22,
-//     dstPort:27017,
-//     localHost:'127.0.0.1',
-//     localPort: 27000
-//
-// };
+
 router.get('/',function (req, res) {
 
     res.setHeader('Access-Control-Allow-Origin', '*');

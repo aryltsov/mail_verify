@@ -1,13 +1,10 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const http = require('http');
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-const SMTPServer = require("smtp-server").SMTPServer;
-const nodemailer = require('nodemailer');
 const verify  = require('./routes/services/verify-mail.service');
 
 const indexRouter = require('./routes/index');
@@ -16,13 +13,11 @@ const mailsRouter = require('./routes/mails');
 const loginRouter = require('./routes/login');
 const verifiedRouter = require('./routes/verified_email');
 const unverifiedRouter = require('./routes/unverified');
-const testRouter       = require('./routes/test');
-const userData = require('./routes/userData');
+const userData = require('./routes/userData').router;
 const sidService = require('./routes/services/sid.service');
 
 const app = express();
 
-const httpServer = http.createServer(app);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -47,7 +42,6 @@ app.use('/send_verified', verifiedRouter);
 app.use('/send_unverified', unverifiedRouter);
 app.use('/user_data', userData);
 app.use('/sid', sidService);
-app.use('/test', testRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
@@ -62,12 +56,6 @@ app.use(function (err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-});
-
-
-
-app.post('/', function (req, res) {
-    res.send('hello world');
 });
 
 fs.watch('../../../../mailsDir/new', (eventType, filename) => {

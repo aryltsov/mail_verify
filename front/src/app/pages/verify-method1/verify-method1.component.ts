@@ -43,14 +43,14 @@ export class VerifyMethod1Component implements OnInit {
   }
 
   sendMessage(userEmail) {
-    // this.pushNotificationService.sendMessageToUser(1, 2);
     if (userEmail) {
       this.getUserData(userEmail).subscribe(item => {
-        const code =  Math.random().toString(36).substring(2, 36);
-        this.message = 'A representative ' + item.email + ' will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code:' + code;
-        this.alertIsOpen = true;
-        console.log(item);
-        this.pushNotificationService.sendMessageToUser(item.token, this.message);
+        item.map(mail => {
+          const code =  Math.random().toString(36).substring(2, 36);
+          this.message = 'A representative ' + mail.email + ' will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code:' + code;
+          this.alertIsOpen = true;
+          this.pushNotificationService.sendMessageToUser(mail.token, this.message);
+        });
       });
     }
   }

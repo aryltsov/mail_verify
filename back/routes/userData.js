@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var MongoClient = require('mongodb').MongoClient;
+let Promise = require('rsvp').Promise;
 
-// Requires official Node.js MongoDB Driver 3.0.0+
-var mongodb = require("mongodb");
-
-var client = mongodb.MongoClient;
-var url = "mongodb://localhost:27017/";
+const url = "mongodb://localhost:27017/";
 
 router.post('/', function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -13,28 +11,37 @@ router.post('/', function (req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
 
-    client.connect(url, function (err, client) {
-
-        var db = client.db("verify_mail");
-        var collection = db.collection("user");
-
-        var query = {
-            "email": req.body.userEmail
-        };
-
-        var cursor = collection.find(query);
-
-        cursor.forEach(
-            function(doc) {
-                res.send(doc);
-                console.log(doc);
-            },
-            function(err) {
-                client.close();
-            }
-        );
-
+    getUsersByEmail(req.body.userEmail).then((items) => {
+       res.send(items);
+    }, (err) => {
+        console.error('The promise was rejected', err, err.stack);
     });
 });
 
-module.exports = router;
+getUsersByEmail = (email) => {
+        return new Promise(function(resolve, reject) {
+            MongoClient.connect(url, function (err, db) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(db.db('verify_mail'));
+                }
+            })
+        }).then(function(db) {
+            return new Promise(function(resolve, reject) {
+                var collection = db.collection('user');
+                const opt = {'email': email};
+                collection.find(opt).toArray(function(err, items) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(items);
+                    }
+                });
+            });
+        });
+};
+module.exports = {
+    router: router,
+    getUserData: getUsersByEmail
+};
