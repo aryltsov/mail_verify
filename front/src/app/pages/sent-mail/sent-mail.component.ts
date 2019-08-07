@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {SentMailService} from '../../providers/sent-mail.service';
+import {ExportService} from '../../providers/export.service';
 
 @Component({
     selector: 'ngx-sent-mail',
@@ -48,7 +49,7 @@ export class SentMailComponent implements OnInit {
     };
     source: [];
 
-    constructor(private sentMailService: SentMailService) {
+    constructor(private sentMailService: SentMailService, private exportService: ExportService) {
     }
 
     ngOnInit() {
@@ -59,4 +60,7 @@ export class SentMailComponent implements OnInit {
             });
     }
 
+  export(data) {
+      this.exportService.downloadFile(data.grid.source.filteredAndSorted, 'VerifiedEmails');
+    }
 }

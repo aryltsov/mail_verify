@@ -63,6 +63,7 @@
     "core-js": "2.5.1",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.0",
+    "file-saver": "^2.0.2",
     "highlight.js": "^9.15.8",
     "intl": "1.2.5",
     "ionicons": "2.0.1",

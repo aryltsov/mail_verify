@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VerificationService} from '../../providers/verification.service';
 import {NbDialogService} from '@nebular/theme';
 import {DialogComponent} from './dialog/dialog.component';
+import {ExportService} from '../../providers/export.service';
 
 @Component({
     selector: 'ngx-verification',
@@ -9,6 +10,7 @@ import {DialogComponent} from './dialog/dialog.component';
     styleUrls: ['./verification.component.scss'],
 })
 export class VerificationComponent implements OnInit {
+  tableData = [];
 
     settings = {
         actions: {
@@ -71,7 +73,7 @@ export class VerificationComponent implements OnInit {
                 },
             },
             reasons: {
-                title: 'reasons'
+                title: 'Reasons'
             }
         },
         editable: false,
@@ -79,7 +81,9 @@ export class VerificationComponent implements OnInit {
     };
     source: [];
 
-    constructor(private verificationService: VerificationService, private dialogService: NbDialogService) {
+    constructor(private verificationService: VerificationService,
+                private dialogService: NbDialogService,
+                private exportService: ExportService) {
     }
 
     ngOnInit() {
@@ -99,4 +103,7 @@ export class VerificationComponent implements OnInit {
         });
     }
 
+  export(data) {
+    this.exportService.downloadFile(data.grid.source.filteredAndSorted, 'VerifiedEmails');
+  }
 }

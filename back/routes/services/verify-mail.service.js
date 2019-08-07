@@ -29,9 +29,9 @@ verifyMail = (file) => {
 
     let time = new Date();
     let tmpSID = [
-        crypto.createHash('sha256').update(body.from + 'Test' + time.setHours(0,0,0,0)).digest('hex'),
-        crypto.createHash('sha256').update(body.from + 'Test' + time.setDate(time.getDate() - 1)).digest('hex'),
-        crypto.createHash('sha256').update(body.from + 'Test' + time.setDate(time.getDate() + 2)).digest('hex'),
+        crypto.createHash('sha256').update(body.from + '38VqDlrqjMMjPeMOlPfQ' + time.setHours(0,0,0,0)).digest('hex'),
+        crypto.createHash('sha256').update(body.from + '38VqDlrqjMMjPeMOlPfQ' + time.setDate(time.getDate() - 1)).digest('hex'),
+        crypto.createHash('sha256').update(body.from + '38VqDlrqjMMjPeMOlPfQ' + time.setDate(time.getDate() + 2)).digest('hex'),
     ];
 
     console.log(tmpSID);
@@ -47,16 +47,10 @@ verifyMail = (file) => {
                 SID = body.sid.toString().replace(/[ ]/g, '');
                 if(tmpSID.indexOf(SID) !== -1){
                     message ="Verified, The email with Subject:" + body.subject + " is legitimate. Tap for more info." + ids;
-                    // sendPush('', ids)
-                    console.log(ids);
-                    console.log(message);
-                    console.log('verify');
+                    sendPush(message, ids);
                 } else {
                     message = "Not Verified" +  "The email with Subject:" + body.subject + " is NOT legitimate. Please discard the email. Tap for more info" + ids;
-                    console.log(ids);
-                    console.log(message);
-                    // sendPush(message, ids)
-                    // sendPush(message, ["eLc8U885uEM:APA91bEvH5gUyywY21sNlMLEYG-tY0n5boa_flsvgheQ9U4KsS7GMFz4t4OqcWiErYHjIWpjABY-pduAPsCDfwqy1WMlvjitorWgCg_A1N4jKnb132Jfw4BA2hh2wjNsFZLP1rrugBkp"])
+                    sendPush(message, ids)
                 }
             }
         }, (err) => {

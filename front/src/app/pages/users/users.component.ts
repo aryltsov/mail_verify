@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {UsersService} from '../../providers/users.service';
+import {ExportService} from '../../providers/export.service';
 
 @Component({
     selector: 'ngx-users',
@@ -36,7 +37,7 @@ export class UsersComponent implements OnInit {
     };
     source: [];
 
-    constructor(private usersService: UsersService) {
+    constructor(private usersService: UsersService, private exportService: ExportService) {
     }
 
     ngOnInit() {
@@ -47,4 +48,7 @@ export class UsersComponent implements OnInit {
             });
     }
 
+  export(data) {
+    this.exportService.downloadFile(data.grid.source.filteredAndSorted, 'Users');
+  }
 }

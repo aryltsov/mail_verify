@@ -10,8 +10,6 @@ const crypto = require('crypto');
 
 router.post('/', jsonParser, function (req, res) {
 
-
-
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
@@ -21,8 +19,8 @@ router.post('/', jsonParser, function (req, res) {
     let sendTo   = req.body.email;
 
     let stringBuild = sendTo;
-    stringBuild += 'TestWrong123';
-    stringBuild += (new Date().setHours(0, 0, 0, 0));
+    stringBuild += 'UlmmPDwgMe6Ufl7Qm8rx';
+    stringBuild += new Date().setHours(0, 0, 0, 0);
     console.log(stringBuild);
 
     let SID = crypto.createHash('sha256').update(stringBuild.toString()).digest('hex');

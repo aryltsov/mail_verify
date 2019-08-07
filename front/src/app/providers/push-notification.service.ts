@@ -23,10 +23,7 @@ export class PushNotificationService {
             title: 'Verify',
             body: message
           },
-          registration_ids: [
-            // deviceId
-            'eLc8U885uEM:APA91bEvH5gUyywY21sNlMLEYG-tY0n5boa_flsvgheQ9U4KsS7GMFz4t4OqcWiErYHjIWpjABY-pduAPsCDfwqy1WMlvjitorWgCg_A1N4jKnb132Jfw4BA2hh2wjNsFZLP1rrugBkp'
-          ],
+          registration_ids: deviceId,
           priority: 'high'
         }, httpOptions).pipe().subscribe(res => console.log(res));
       }

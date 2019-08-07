@@ -24,5 +24,8 @@ const components = [
   declarations: [
     ...components,
   ],
+  exports: [
+    IconsComponent
+  ]
 })
 export class UiFeaturesModule { }

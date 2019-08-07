@@ -1,12 +1,10 @@
 <nb-card size="xsmall">
-    <nb-card-header>
+    <nb-card-header class="d-flex justify-content-between align-items-center">
         <span>Email Verification Request</span>
+        <button nbButton size="small" (click)="export(table)">Export</button>
     </nb-card-header>
-
-
-
     <nb-card-body class="p-0">
-        <ng2-smart-table [source]="source" [settings]="settings"></ng2-smart-table>
+        <ng2-smart-table [source]="source" [settings]="settings" #table></ng2-smart-table>
     </nb-card-body>
 
 </nb-card>

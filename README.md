@@ -9,3 +9,5 @@
 <h4>Frontend (Angular)</h4>
 
 <h4>Backend (Node js)</h4>
+<p>verified key for email:  <strong>38VqDlrqjMMjPeMOlPfQ</strong></p>
+<p>unverified key for email:  <strong>UlmmPDwgMe6Ufl7Qm8rx</strong></p>
