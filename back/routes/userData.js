@@ -11,14 +11,14 @@ router.post('/', function (req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
 
-    getUsersByEmail(req.body.userEmail).then((items) => {
+    getUsersByEmail(req.body.userEmail, 'user').then((items) => {
        res.send(items);
     }, (err) => {
         console.error('The promise was rejected', err, err.stack);
     });
 });
 
-getUsersByEmail = (email) => {
+getUsersByEmail = (email, collectionName) => {
         return new Promise(function(resolve, reject) {
             MongoClient.connect(url, function (err, db) {
                 if (err) {
@@ -29,8 +29,9 @@ getUsersByEmail = (email) => {
             })
         }).then(function(db) {
             return new Promise(function(resolve, reject) {
-                var collection = db.collection('user');
-                const opt = {'email': email};
+                let collection = db.collection(collectionName);
+                let opt = {'email': email};
+                if(email === 'all') opt = {};
                 collection.find(opt).toArray(function(err, items) {
                     if (err) {
                         reject(err);
@@ -41,7 +42,22 @@ getUsersByEmail = (email) => {
             });
         });
 };
+saveToBase = (collectionName, data) =>{
+            console.log(data);
+
+    MongoClient.connect(url, function (err, db) {
+
+        // if (err) throw err;
+        let dbo = db.db('verify_mail');
+
+        dbo.collection(collectionName).insertOne(data, (err, res) => {
+
+        });
+        db.close();
+    });
+};
 module.exports = {
     router: router,
-    getUserData: getUsersByEmail
+    getUserData: getUsersByEmail,
+    save: saveToBase
 };

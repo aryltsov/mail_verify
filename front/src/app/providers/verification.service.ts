@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {ajax} from 'rxjs/ajax';
-import {map, catchError} from 'rxjs/operators';
+import {map, catchError, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
 })
 export class VerificationService {
-    constructor() {
+    constructor(private httpClient: HttpClient) {
     }
 
     getVerificationData() {
@@ -22,5 +23,16 @@ export class VerificationService {
             }),
         );
     }
+
+  phoneVerification(userEmail) {
+        const URL = window.location.protocol + '//' + window.location.hostname;
+
+        return this.httpClient.post<{ access_token: string }>(URL + ':3000/phoneVerification', {
+          userEmail
+        }).pipe(tap(res => {
+          console.log(res);
+        }));
+
+  }
 
 }

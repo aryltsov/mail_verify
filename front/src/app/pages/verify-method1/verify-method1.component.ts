@@ -3,6 +3,7 @@ import { PushNotificationService } from '../../providers/push-notification.servi
 import {ajax} from 'rxjs/ajax';
 import {catchError, map} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {MongoService} from '../../providers/mongo.service';
 
 @Component({
   selector: 'ngx-verify-method1',
@@ -13,7 +14,8 @@ export class VerifyMethod1Component implements OnInit {
 
   alertIsOpen = false;
   message: string;
-  constructor(private pushNotificationService: PushNotificationService) { }
+  constructor(private pushNotificationService: PushNotificationService,
+              private mongoService: MongoService) { }
 
   ngOnInit() {
   }
@@ -53,6 +55,14 @@ export class VerifyMethod1Component implements OnInit {
           tokens.push(mail.token);
         });
         this.pushNotificationService.sendMessageToUser(tokens, this.message);
+        const data = {
+                  email: userEmail,
+                  date: new Date(),
+                  user: localStorage.getItem('user_email'),
+                  code: code
+        };
+        this.mongoService.saveToBase('phone_verification', data);
+        // this.mongoService.getMails('phone_verification', {email: userEmail});
       });
     }
   }

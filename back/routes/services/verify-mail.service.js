@@ -46,10 +46,12 @@ verifyMail = (file) => {
             if(body.hasOwnProperty('sid')) {
                 SID = body.sid.toString().replace(/[ ]/g, '');
                 if(tmpSID.indexOf(SID) !== -1){
-                    message ="Verified, The email with Subject:" + body.subject + " is legitimate. Tap for more info." + ids;
+                    message ="Verified, The email with Subject:" + body.subject + " is legitimate.";
+                    // message ="Verified, The email with Subject:" + body.subject + " is legitimate. Tap for more info." + ids;
                     sendPush(message, ids);
                 } else {
-                    message = "Not Verified" +  "The email with Subject:" + body.subject + " is NOT legitimate. Please discard the email. Tap for more info" + ids;
+                    message = "Not Verified" +  "The email with Subject:" + body.subject + " is NOT legitimate. Please discard the email.";
+                    // message = "Not Verified" +  "The email with Subject:" + body.subject + " is NOT legitimate. Please discard the email. Tap for more info" + ids;
                     sendPush(message, ids)
                 }
             }

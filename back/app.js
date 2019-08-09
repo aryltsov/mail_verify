@@ -15,6 +15,7 @@ const verifiedRouter = require('./routes/verified_email');
 const unverifiedRouter = require('./routes/unverified');
 const userData = require('./routes/userData').router;
 const sidService = require('./routes/services/sid.service');
+const phoneVerification = require('./routes/phoneVerification').router;
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.use('/send_verified', verifiedRouter);
 app.use('/send_unverified', unverifiedRouter);
 app.use('/user_data', userData);
 app.use('/sid', sidService);
+app.use('/phoneVerification', phoneVerification);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));

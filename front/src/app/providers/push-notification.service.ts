@@ -12,21 +12,21 @@ export class PushNotificationService {
   sendMessageToUser(deviceId, message) {
       const URL = 'https://fcm.googleapis.com/fcm/send';
       const API_KEY = 'AIzaSyDjG-ovMTJ06PxgAJ0tAkke0LL0reKUuI4';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'key=' + API_KEY
-      })
-    };
-        return this.httpClient.post<any>(URL, {
-          data: {
-            title: 'Verify',
-            body: message
-          },
-          registration_ids: deviceId,
-          priority: 'high'
-        }, httpOptions).pipe().subscribe(res => console.log(res));
-      }
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'key=' + API_KEY
+        })
+      };
+          return this.httpClient.post<any>(URL, {
+            data: {
+              title: 'Phone call verified',
+              body: message,
+            },
+            registration_ids: deviceId,
+            priority: 'high'
+          }, httpOptions).pipe().subscribe(res => console.log(res));
+  }
 }
 
 

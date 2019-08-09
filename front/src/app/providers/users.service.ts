@@ -12,9 +12,9 @@ export class UsersService {
     constructor(private http: HttpClient) {
     }
 
-    getUsersData() {
+    getUsersData(req) {
       const URL = window.location.protocol + '//' + window.location.hostname;
-        return ajax(URL + `:3000/get_users`).pipe(
+        return ajax(URL + ':3000/' + req).pipe(
             map(userResponse => {
                 console.log('users: ', userResponse);
                 return userResponse.response;
