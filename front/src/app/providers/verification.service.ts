@@ -27,7 +27,7 @@ export class VerificationService {
   phoneVerification(userEmail) {
         const URL = window.location.protocol + '//' + window.location.hostname;
 
-        return this.httpClient.post<{ access_token: string }>(URL + ':3000/phoneVerification', {
+        return this.httpClient.post<any>(URL + ':3000/phoneVerification', {
           userEmail
         }).pipe(tap(res => {
           console.log(res);

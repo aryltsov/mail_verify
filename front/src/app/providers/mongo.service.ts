@@ -27,14 +27,12 @@ export class MongoService {
       }),
     ).subscribe();
   }
-
-  getMails(collectionName, data) {
+  getDataFromBD(collectionName, filterOptions) {
     const URL = window.location.protocol + '//' + window.location.hostname;
-
-    return ajax({
-      url: URL + ':3000/phoneVerification/verified',
-      method: 'POST',
-      body: data
-    }).subscribe();
+      return ajax({
+        url: URL + ':3000/user_data/getData',
+        method: 'POST',
+        body: {filterOption: filterOptions, collectionName: collectionName}
+      }).pipe();
   }
 }

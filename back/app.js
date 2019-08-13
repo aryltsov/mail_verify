@@ -61,7 +61,12 @@ app.use(function (err, req, res, next) {
 });
 
 fs.watch('../../../../mailsDir/new', (eventType, filename) => {
-// fs.watch('../../Maildir/new', (eventType, filename) => {
-    verify.readMail(filename);
+// fs.watch('../../../home/verify/Maildir/new', (eventType, filename) => {
+
+    if(fs.existsSync('../../../../mailsDir/new/' + filename)) {
+    // if(fs.existsSync('../../../home/verify/Maildir/new' + filename)) {
+        verify.readMail(filename);
+    }
+
 });
 module.exports = app;

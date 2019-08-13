@@ -18,7 +18,20 @@ router.post('/', function (req, res, next) {
     });
 });
 
-getUsersByEmail = (email, collectionName) => {
+router.post('/getData', (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+
+    getUsersByEmail('all', req.body.collectionName, req.body.filterOption).then( items => {
+        res.send(items);
+    }, (err) => {
+        console.error('The promise was rejected', err, err.stack);
+    })
+});
+
+getUsersByEmail = (email, collectionName, filterOptions) => {
         return new Promise(function(resolve, reject) {
             MongoClient.connect(url, function (err, db) {
                 if (err) {
@@ -32,6 +45,7 @@ getUsersByEmail = (email, collectionName) => {
                 let collection = db.collection(collectionName);
                 let opt = {'email': email};
                 if(email === 'all') opt = {};
+                if(filterOptions) opt = filterOptions;
                 collection.find(opt).toArray(function(err, items) {
                     if (err) {
                         reject(err);
@@ -43,15 +57,38 @@ getUsersByEmail = (email, collectionName) => {
         });
 };
 saveToBase = (collectionName, data) =>{
-
     MongoClient.connect(url, function (err, db) {
 
         let dbo = db.db('verify_mail');
+        if(data._id){
+            dbo.collection(collectionName).find({_id: data._id}).toArray((err, items) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    if(items.length >= 0) {
+                        dbo.collection(collectionName).updateOne({_id : data._id}, {$set: data},(err, rez) => {
+                            if(err) throw err;
+                            console.log('update');
+                            db.close();
 
-        dbo.collection(collectionName).insertOne(data, (err, res) => {
-            console.log('save');
-        });
-        db.close();
+                        });
+                    } else {
+                        dbo.collection(collectionName).insertOne(data, (err, rez) => {
+                            console.log('save');
+                            db.close();
+
+                        });
+                    }
+                }
+            });
+        } else {
+            dbo.collection(collectionName).insertOne(data, (err, rez) => {
+                console.log('save');
+                db.close();
+
+            });
+        }
+
     });
 };
 module.exports = {

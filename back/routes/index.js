@@ -3,8 +3,9 @@ const router = express.Router();
 
 
 router.get('/',function(req, res, next) {
+  console.log(new Date());
   res.render('index',
-      { title: 'Express'});
+      { title: '404'});
 });
 
 
