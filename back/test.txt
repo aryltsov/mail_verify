@@ -1,1 +1,191 @@
-SId: bff314a0dc452c71b16d64d5c3a6cb7022610db8e3ac066c040b94e5230ad7be
+Return-Path: <junior.web.dev111@gmail.com>
+X-Original-To: root@peerkey.com
+Delivered-To: root@peerkey.com
+Received: from mail-qk1-f172.google.com (mail-qk1-f172.google.com [209.85.222.172])
+        by localhost (Postfix) with ESMTPS id 272CD3EE80
+        for <root@peerkey.com>; Mon, 12 Aug 2019 13:49:00 +0000 (UTC)
+Received: by mail-qk1-f172.google.com with SMTP id 125so3911302qkl.6
+        for <root@peerkey.com>; Mon, 12 Aug 2019 06:49:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=iiUxgKsxQ2wb73XKYyIFXHuBPcEy/c6WggaOdRFOPLE=;
+        b=Dxx0jYETdMANTju+dRoUKfZmoau8jVORaKcEj0Q0yg6dXxDOb1tzKppzItpvLZ71D/
+         4vAkG11AsWf+RBsq/BRYa5Vs7LRNDUG7eCMyYcMwZsjndSGKXrwmjlg3ivnsomE9p6bk
+         DYzZ/Sy0ozbRDxmBx+qkJYGYqaL+rwMz45SxtBzNhP841jMp6zF3UbCyTtG0M3iKckmb
+         ryHnWE1cimalaWmHpgn0g+Onkb/M8wQ4tF0zGHcQiM0753zO9AwuHV1Wmc+dlwVwdGJQ
+         3DB67LiEzG+TLsyD3nxwsz12Vol5tSluzFwIBpjS60M9PBxxT2OAzMvKVadElVK8D1VF
+         ZLAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=iiUxgKsxQ2wb73XKYyIFXHuBPcEy/c6WggaOdRFOPLE=;
+        b=HFgQIYjKIZSSWmAsArQR6nWB+f/80tr61vBc7i7zqKRrbDiZlcHOSLEWeNv+aTxm6E
+         EsrrqdlPjS1A/DxwulwFq4zcJprEEOBInd+RKwuvPyyKEWph1Zx7TDEMxucmhvENpKIa
+         E30aYWxwirVSSuBYHqrorUhLA7eW6UXVCe9mIhl9F4qv63xUOQgOVIWd5i/XlVreG0w5
+         sxC7N5STh3hYx3/2LB3OGRlcnMo7fqL+r3ufhXWHUOEVWyEXSXHVV1JHwTX8QhXvu9PX
+         Zr1gHZUUu7W2cJid9czc6tQoNTNheSHIVrqh5aP4I1W0iBj+FDIOPEszdSMOQJdKy/Gl
+         H3IQ==
+X-Gm-Message-State: APjAAAVZvv6GhHXowjEDeaG0Sr9QlXH4b3k+LDl7SBbPyo64iFQJXvmt
+        QOp60FKBxwsO6saGXQcXuJENL829CovMSJmUb7ZSBg==
+X-Google-Smtp-Source: APXvYqxcV2Qa7ok2uFbjpYPCrxGOjjIkIm4vhSuHz1kB7CyGMePNkb5Zrk5USIuh8ZLiEhGFuKUnqAPsjtJOC8EGnYU=
+X-Received: by 2002:a05:620a:1376:: with SMTP id d22mr18261281qkl.486.1565617738351;
+ Mon, 12 Aug 2019 06:48:58 -0700 (PDT)
+MIME-Version: 1.0
+References: <34540838-05eb-1f6e-ead3-a3feef1bb6f2@peerkey.com>
+In-Reply-To: <34540838-05eb-1f6e-ead3-a3feef1bb6f2@peerkey.com>
+From: Jun Dev <junior.web.dev111@gmail.com>
+Date: Mon, 12 Aug 2019 16:48:47 +0300
+Message-ID: <CAK=W8RLcCTvMkR9LjH8rDcJBbETQ6CUEK44adM=uVnfjcDFvbQ@mail.gmail.com>
+Subject: Fwd: Test
+To: root@peerkey.com
+Content-Type: multipart/alternative; boundary="000000000000260b70058febc958"
+
+--000000000000260b70058febc958
+
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+=D0=9E=D1=82: <anton@peerkey.com>
+Date: =D0=BF=D0=BD, 12 =D0=B0=D0=B2=D0=B3. 2019 =D0=B3. =D0=B2 16:40
+Subject: Test
+To: <junior.web.dev111@gmail.com>
+
+
+
+
+Hi Sandra,
+
+We're writing to you regarding your bank account with ABC Bank. As you may
+be aware our privacy policy has been updated, please see our privacy policy
+attached. This will come into effect from 1st January 2017.
+Click to read Privacy Policy <http://google.com>
+
+If you have any questions please contact us on 1800 ABC BANK
+
+Thank you for banking with ABC Bank
+ABC Bank will NEVER send an email which includes a link that redirects you
+to logon to Internet Banking or asks you to verify your account details,
+PIN, passwords or personal information.
+
+Copyright =C2=A9 ABC Bank (ABN 11 000 000 000)
+
+SID: 4CBF7C2D5F9E9F96143D4EE856F895C79A8C04FC5089DAB05809CDC42B738324
+
+--000000000000260b70058febc958
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">---------- Forwarded message ---------<br>=D0=9E=D1=82: <sp=
+an dir=3D"auto">&lt;<a href=3D"mailto:anton@peerkey.com">anton@peerkey.com<=
+/a>&gt;</span><br>Date: =D0=BF=D0=BD, 12 =D0=B0=D0=B2=D0=B3. 2019 =D0=B3. =
+=D0=B2 16:40<br>Subject: Test<br>To:  &lt;<a href=3D"mailto:junior.web.dev1=
+11@gmail.com">junior.web.dev111@gmail.com</a>&gt;<br></div><br><br><u></u>
+
+
+   =20
+   =20
+   =20
+   =20
+
+<div>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m_-7551816=
+922186222528body">
+    <tbody><tr>
+        <td>=C2=A0</td>
+        <td class=3D"m_-7551816922186222528container">
+            <div class=3D"m_-7551816922186222528content">
+                <img src=3D"https://i.imgur.com/JP686Lo.png">
+
+               =20
+                <table class=3D"m_-7551816922186222528main">
+
+                   =20
+                    <tbody><tr>
+                        <td class=3D"m_-7551816922186222528wrapper">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0">
+                                <tbody><tr>
+                                    <td>
+                                        <p>Hi Sandra,</p>
+                                        <p>We&#39;re writing to you regardi=
+ng your bank account with ABC Bank. As you may be aware our privacy policy =
+has been updated, please see our privacy policy attached. This will come in=
+to effect from 1st January 2017.</p>
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" class=3D"m_-7551816922186222528btn m_-7551816922186222=
+528btn-primary">
+                                            <tbody>
+                                            <tr>
+                                                <td align=3D"left">
+                                                    <table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td> <a href=3D=
+"http://google.com" target=3D"_blank">Click to read Privacy Policy</a> </td=
+>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>If you have any questions please=
+ contact us on 1800 ABC BANK</p>
+                                        <p>Thank you for banking with ABC B=
+ank</p>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+
+                   =20
+                </tbody></table>
+
+               =20
+                <div class=3D"m_-7551816922186222528footer">
+                    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+>
+                        <tbody><tr>
+                            <td class=3D"m_-7551816922186222528content-bloc=
+k">
+                                <span class=3D"m_-7551816922186222528apple-=
+link">
+ABC Bank will NEVER send an email which includes a link that redirects you =
+to logon to Internet Banking or asks you to verify your account details, PI=
+N, passwords or personal information.</span>
+                               <br> <p>Copyright =C2=A9 ABC Bank (ABN 11 00=
+0 000 000)</p>
+
+                                <br> <p> SID: 4CBF7C2D5F9E9F96143D4EE856F89=
+5C79A8C04FC5089DAB05809CDC42B738324</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class=3D"m_-7551816922186222528content-bloc=
+k m_-7551816922186222528powered-by">
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+
+               =20
+
+                </div>
+        </td>
+        <td>=C2=A0</td>
+    </tr>
+</tbody></table>
+</div>
+=20
+</div></div>
+
+--000000000000259b70058febc958--
+                                  
+

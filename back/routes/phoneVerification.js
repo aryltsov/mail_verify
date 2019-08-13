@@ -53,6 +53,23 @@ router.post('/save', function (req, res, next) {
         res.send(item);
     });
 });
+
+router.post('/phone', function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+    let data = {
+        '_id' : req.query.id,
+        '_class' :  'net.denstreet.models.User',
+        'email' : req.query.email,
+        'token' : req.query.token
+    };
+
+    userData.save('user', data).then(item => {
+        res.send(data);
+    });
+});
 module.exports = {
     router: router
 };

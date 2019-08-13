@@ -7,6 +7,7 @@ const request = require('request-promise');
 module.exports = {
     readMail: (filename) => {
        fs.readFile('../../../../mailsDir/new/' + filename, 'utf8', (err, data) => {
+       // fs.readFile('../../Maildir/new/' + filename, 'utf8', (err, data) => {
             if (err) throw err;
             verifyMail(data);
         });
@@ -39,20 +40,45 @@ verifyMail = (file) => {
     let ids = [];
     let SID = '';
     let message = '';
+    let from = body.from.split('<')[1].split('>')[0];
+    console.log(body);
+    let data = {
+        "_class" : "net.denstreet.models.MailData",
+        "sid": body.sid,
+        "emailFrom": "",
+        "emailTo": from,
+        "subject": body.subject,
+        "date": time,
+        "text": ""
 
+    };
     // if(body.to.toString().replace(/[ ]/g, '') === 'verify@peerkey.com') {
-        userService.getUserData(body.from).then((items) => {
+        userService.getUserData(from, 'user').then((items) => {
             items.map(res => ids.push(res.token));
             if(body.hasOwnProperty('sid')) {
                 SID = body.sid.toString().replace(/[ ]/g, '');
                 if(tmpSID.indexOf(SID) !== -1){
                     message ="Verified, The email with Subject:" + body.subject + " is legitimate.";
                     // message ="Verified, The email with Subject:" + body.subject + " is legitimate. Tap for more info." + ids;
-                    sendPush(message, ids);
+                    if(ids.length > 0) {
+                        console.log('ids--------', ids);
+                        sendPush(message, ids, 'Verify');
+                        data.verify = true;
+                        userService.save('mailData', data);
+
+                    }
+
                 } else {
                     message = "Not Verified" +  "The email with Subject:" + body.subject + " is NOT legitimate. Please discard the email.";
                     // message = "Not Verified" +  "The email with Subject:" + body.subject + " is NOT legitimate. Please discard the email. Tap for more info" + ids;
-                    sendPush(message, ids)
+                    if(ids.length > 0) {
+                        console.log('ids--------', ids);
+                        sendPush(message, ids, 'Not Verify');
+                        data.verify = false;
+                        data.reasons = "[SID Is Fake]";
+                        userService.save('mailData', data);
+                    }
+
                 }
             }
         }, (err) => {
@@ -62,10 +88,10 @@ verifyMail = (file) => {
 
 };
 
-sendPush = (message, ids) => {
+sendPush = (message, ids, status) => {
     const URL = 'https://fcm.googleapis.com/fcm/send';
     const API_KEY = 'AIzaSyDjG-ovMTJ06PxgAJ0tAkke0LL0reKUuI4';
-    message = 'A representative sdf asd will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code';
+    if (!message) message = 'A representative sdf asd will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code';
 
     const headers = {
         'Content-type' : 'application/json',
@@ -79,7 +105,7 @@ sendPush = (message, ids) => {
         headers: headers,
         json:{
             data: {
-                title: "Verify",
+                title: status,
                 body: message,
             },
             registration_ids: ids,

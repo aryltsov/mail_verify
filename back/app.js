@@ -61,6 +61,7 @@ app.use(function (err, req, res, next) {
 });
 
 fs.watch('../../../../mailsDir/new', (eventType, filename) => {
+// fs.watch('../../Maildir/new', (eventType, filename) => {
     verify.readMail(filename);
 });
 module.exports = app;

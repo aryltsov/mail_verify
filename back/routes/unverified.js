@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const send = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+const userService = require('./userData');
 const crypto = require('crypto');
 
 
@@ -363,6 +364,18 @@ router.post('/', jsonParser, function (req, res) {
             console.log(error);
         } else {
             console.log('Email sent: ' + info.messageId);
+            userService.save('mailData', {
+                "sid": SID,
+                "_class" : "net.denstreet.models.MailData",
+                "emailFrom": mailOptions.from,
+                "emailTo": mailOptions.to,
+                "data": new Date(),
+                "subject" : mailOptions.subject,
+                "verify" : true,
+                "isSent" : true,
+                "text" : '',
+                "reasons" : ""
+            });
         }
     });
 });

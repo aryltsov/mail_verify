@@ -43,15 +43,13 @@ getUsersByEmail = (email, collectionName) => {
         });
 };
 saveToBase = (collectionName, data) =>{
-            console.log(data);
 
     MongoClient.connect(url, function (err, db) {
 
-        // if (err) throw err;
         let dbo = db.db('verify_mail');
 
         dbo.collection(collectionName).insertOne(data, (err, res) => {
-
+            console.log('save');
         });
         db.close();
     });
