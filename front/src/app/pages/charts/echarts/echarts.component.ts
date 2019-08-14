@@ -23,7 +23,7 @@ export class EchartsComponent implements OnInit {
       const fake = res.length - verified;
       this.emailVerivication = [fake, verified];
     });
-    this.mongoService.getDataFromBD('phone_verification', {}).subscribe(items => {
+    this.mongoService.getDataFromBD('calls', {}).subscribe(items => {
       let real = 0;
       let notReal = 0;
       items.response.map(res => {

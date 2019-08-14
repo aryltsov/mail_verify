@@ -60,11 +60,11 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-fs.watch('../../../../mailsDir/new', (eventType, filename) => {
-// fs.watch('../../../home/verify/Maildir/new', (eventType, filename) => {
+// fs.watch('../../../../mailsDir/new', (eventType, filename) => {
+fs.watch('../../../home/verify/Maildir/new', (eventType, filename) => {
 
-    if(fs.existsSync('../../../../mailsDir/new/' + filename)) {
-    // if(fs.existsSync('../../../home/verify/Maildir/new' + filename)) {
+    // if(fs.existsSync('../../../../mailsDir/new/' + filename)) {
+    if(fs.existsSync('../../../home/verify/Maildir/new' + filename)) {
         verify.readMail(filename);
     }
 

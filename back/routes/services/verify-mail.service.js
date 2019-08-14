@@ -6,15 +6,14 @@ const request = require('request-promise');
 
 module.exports = {
     readMail: (filename) => {
-       fs.readFile('../../../../mailsDir/new/' + filename, 'utf8', (err, data) => {
-       // fs.readFile('../../../home/verify/Maildir/new' + filename, 'utf8', (err, data) => {
+       // fs.readFile('../../../../mailsDir/new/' + filename, 'utf8', (err, data) => {
+       fs.readFile('../../../home/verify/Maildir/new' + filename, 'utf8', (err, data) => {
             if (err) throw err;
             verifyMail(data, filename);
-
         });
       setTimeout(()=> {
-          fs.unlinkSync('../../../../mailsDir/new/' + filename, (err) => {
-          // fs.unlinkSync('../../../home/verify/Maildir/new' + filename, (err) => {
+          // fs.unlinkSync('../../../../mailsDir/new/' + filename, (err) => {
+          fs.unlinkSync('../../../home/verify/Maildir/new' + filename, (err) => {
               if(err) console.log(err);
           });
       }, 2000);

@@ -56,9 +56,9 @@ getUsersByEmail = (email, collectionName, filterOptions) => {
             });
         });
 };
-saveToBase = (collectionName, data) =>{
+saveToBase = (collectionName, data) => {
     MongoClient.connect(url, function (err, db) {
-
+            console.log(data);
         let dbo = db.db('verify_mail');
         if(data._id){
             dbo.collection(collectionName).find({_id: data._id}).toArray((err, items) => {

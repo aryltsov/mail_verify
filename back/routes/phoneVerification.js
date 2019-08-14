@@ -21,6 +21,10 @@ router.post('/verified', function (req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
     userData.getUserData(req.body.email, 'phone_verification').then(item => {
+
+        let verifiedCalls = {};
+        let notVerifiedCalls = {};
+
         if(item.length <= 0) {
             res.send({
                 title: 'Error',
@@ -33,22 +37,30 @@ router.post('/verified', function (req, res, next) {
                 let tmpTime = new Date(ev.date);
                 let minutesLost = Math.ceil(Math.abs(tmpTime.getTime() - currentDate.getTime())) / 60000;
 
-                if(minutesLost < 10) {
-                    res.send({
-                        title: 'Phone verified',
-                        body: 'A representative ' + ev.email + ' will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code: ' + ev.code
-                    });
-                    ev.verify = true;
-                    userData.save('phone_verification', ev);
+                if(minutesLost < 10){
+                    verifiedCalls = ev;
                 } else {
-                    res.send({
-                        title: 'Phone verified',
-                        body: ev.email + ' no calls'
-                    });
-                    ev.verify = false;
-                    userData.save('phone_verification', ev);
+                    notVerifiedCalls = ev;
                 }
             });
+        }
+
+        if(Object.keys(verifiedCalls).length === 0 && verifiedCalls.constructor === Object) {
+            res.send({
+                title: 'Phone verified',
+                body: req.body.email + ' no calls'
+            });
+            notVerifiedCalls.verify = false;
+            delete notVerifiedCalls._id;
+            userData.save('calls', notVerifiedCalls);
+        } else {
+            res.send({
+                title: 'Phone verified',
+                body: 'A representative ' + verifiedCalls.email + ' will be calling you withing 10 minutes. To ensure they`re legitimate, ask them for this code: ' + verifiedCalls.code
+            });
+            verifiedCalls.verify = true;
+            delete verifiedCalls._id;
+            userData.save('calls', verifiedCalls);
         }
     });
 });
